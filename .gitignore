@@ -18,6 +18,10 @@ out/
 # release/
 
 # Gradle files
+gradlew.bat
+gradlew
+gradle/
+wrapper/
 .gradle/
 build/
 

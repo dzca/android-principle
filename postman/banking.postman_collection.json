@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "23373aaf-b139-42eb-828a-14692e7be743",
+		"name": "banking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "accounts",
+			"item": [
+				{
+					"name": "add",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// const id = pm.response.json()._id",
+									"// const name = pm.response.json().name",
+									"",
+									"// pm.test(\"add tag returned\", () => {",
+									"//     pm.expect(name).to.be.a(\"string\")",
+									"//     pm.response.to.have.status(200);",
+									"// });",
+									"",
+									"// pm.environment.set(\"id\", id)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"accountNumber\": \"12345679\",\n    \"password\": \"password\",\n    \"balance\":45468.29\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/accounts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const tags = pm.response.json()",
+									"",
+									"pm.test(\"list tag returned\", () => {",
+									"    pm.expect(tags.length).to.gt(0)",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/accounts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const name = pm.response.json().name",
+									"",
+									"pm.test(\"find tag returned\", () => {",
+									"    pm.expect(name).to.be.a(\"string\")",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/accounts/12345678",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
+								"12345678"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const name = pm.response.json().name",
+									"",
+									"// const tag2_name = pm.environment.get(\"tag2\")",
+									"pm.test(\"update tag returned\", () => {",
+									"    pm.expect(name).to.eql(\"redis\")",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"redis\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7001/api/tags/{{id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7001",
+							"path": [
+								"api",
+								"tags",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// const ok = pm.response.json().ok",
+									"// const n = pm.response.json().n",
+									"",
+									"// pm.test(\"delete tag returned\", () => {",
+									"//     pm.expect(n).to.eql(1)",
+									"//     pm.expect(ok).to.eql(1)",
+									"//     pm.response.to.have.status(200);",
+									"// });"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/accounts/12345679",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"accounts",
+								"12345679"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

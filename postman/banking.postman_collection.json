@@ -204,6 +204,29 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "token",
+			"item": [
+				{
+					"name": "token",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/token/qqbb12",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"token",
+								"qqbb12"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
